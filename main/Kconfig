@@ -1,0 +1,44 @@
+menu "App - Sandbox"
+
+	choice APP_SANDBOX_LOG_LEVEL
+		bool "Logging level"
+		default APP_SANDBOX_LOG_LEVEL_WARN
+		help
+			todo
+		
+		config APP_SANDBOX_LOG_LEVEL_NONE
+			bool "No output"
+		config APP_SANDBOX_LOG_LEVEL_ERROR
+			bool "Error"
+		config APP_SANDBOX_LOG_LEVEL_WARN
+			bool "Warning"
+		config APP_SANDBOX_LOG_LEVEL_INFO
+			bool "Info"
+		config APP_SANDBOX_LOG_LEVEL_DEBUG
+			bool "Debug"
+		config APP_SANDBOX_LOG_LEVEL_VERBOSE
+			bool "Verbose"
+	endchoice
+
+	config APP_SANDBOX_LOG_LEVEL
+		int
+		default 0 if APP_SANDBOX_LOG_LEVEL_NONE
+		default 1 if APP_SANDBOX_LOG_LEVEL_ERROR
+		default 2 if APP_SANDBOX_LOG_LEVEL_WARN
+		default 3 if APP_SANDBOX_LOG_LEVEL_INFO
+		default 4 if APP_SANDBOX_LOG_LEVEL_DEBUG
+		default 5 if APP_SANDBOX_LOG_LEVEL_VERBOSE
+
+	config APP_SANDBOX_TOKEN_CLIENT
+		string "Token client"
+		default ""
+		help
+			todo
+
+	config APP_SANDBOX_TOKEN_PASSWORD
+		string "Token password"
+		default ""
+		help
+			todo
+
+endmenu
